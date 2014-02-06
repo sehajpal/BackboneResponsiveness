@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="known bugs - on viewport change it doesn't automatically refreshes the content. JS hack applied.">
+    <meta name="author" content="ashish sehajpal">
+    <title>Responsive example</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="content/styles/bootstrap.css" rel="stylesheet">
+    <link href="content/styles/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="content/styles/justified-nav.css" rel="stylesheet">
+    <link href="content/styles/docs.css" rel="stylesheet">
+    <script type="text/javascript" src="content/scripts/ICanHaz.min.js"></script>
+</head>
+
+<body>
+
+    <div id="profileBrowser" class="container">
+        <h3 class="alignCenter">Profile Browser</h3>
+
+        <div class="row">
+            <div class="span3">
+                <div class="bs-docs-sidebar">
+                    <ul class="nav nav-list bs-docs-sidenav affix mainMenu">
+                    </ul>
+                </div>
+            </div>
+            <div class="span6">
+                <div class="celebDetails clearBack "></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Templates -->
+    <script id="celebsMenu" type="text/html">
+        {{#Celebs}}
+           <li>
+               <a class="menuLink" href="#details{{id}}" data-parent="#profileBrowser" data-toggle="collapse" linkid="{{id}}">{{ firstName }} {{ lastName }}</a>
+               <div class="span6">
+                   <div id="details{{id}}" class="clearBack mobileView collapse in"></div>
+               </div>
+           </li>
+
+        {{/Celebs}}
+    </script>
+    <script id="celebDetails" type="text/html">
+        {{#CelebDetails}}
+        <div class="thumbnail thumbs">
+            <img src="content/{{picture}}" style="height: 100px;" />
+        </div>
+        <h3 class="celebHeader">{{ firstName}} {{lastName}}</h3>
+        <pre>{{ bio }}</pre>
+        {{/CelebDetails}}
+    </script>
+
+    <!-- Libraries -->
+    <script type="text/javascript" src="content/scripts/zepto.min.js"></script>
+    <script type="text/javascript" src="content/scripts/underscore-min.js"></script>
+    <script type="text/javascript" src="content/scripts/backbone-min.js"></script>
+    <script type="text/javascript" src="content/scripts/data.js"></script>
+    <!-- app logic -->
+    <script type="text/javascript" src="content/scripts/app.js"></script>
+</body>
+</html>
